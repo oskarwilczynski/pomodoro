@@ -44,6 +44,8 @@ body {
 
 #time {
 	cursor: auto !important;
+	vertical-align: middle;
+	font-size: 1.5em;
 }
 
 #upperButtons div,
@@ -72,11 +74,6 @@ body {
 	height: 226px;
 	margin: 5% auto;
 	padding-top: 50px;
-}
-
-#time {
-	vertical-align: middle;
-	font-size: 1.5em;
 }
 
 #addTime,
