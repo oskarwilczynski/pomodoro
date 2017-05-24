@@ -1,19 +1,19 @@
 const
-    upperButtons = getElementById("upperButtons"),
-    work = getElementById("work"),
-    longBreak = getElementById("longBreak"),
-    shortBreak = getElementById("shortBreak"),
-    timer = getElementById("timer"),
-    mode = getElementById("mode"),
-    addTime = getElementById("addTime"),
-    time = getElementById("time"),
-    minutes = getElementById("minutes"),
-    seconds = getElementById("seconds"),
-    reduceTime = getElementById("reduceTime"),
-    lowerButtons = getElementById("lowerButtons"),
-    start = getElementById("start"),
-    resumePause = getElementById("resumePause"),
-    reset = getElementById("reset");
+    upperButtons = document.getElementById("upperButtons"),
+    work = document.getElementById("work"),
+    longBreak = document.getElementById("longBreak"),
+    shortBreak = document.getElementById("shortBreak"),
+    timer = document.getElementById("timer"),
+    mode = document.getElementById("mode"),
+    addTime = document.getElementById("addTime"),
+    time = document.getElementById("time"),
+    minutes = document.getElementById("minutes"),
+    seconds = document.getElementById("seconds"),
+    reduceTime = document.getElementById("reduceTime"),
+    lowerButtons = document.getElementById("lowerButtons"),
+    start = document.getElementById("start"),
+    resumePause = document.getElementById("resumePause"),
+    reset = document.getElementById("reset");
 
 work.addEventListener('click', workOn);
 function workOn() {
