@@ -53,9 +53,15 @@ function leadingZeros(i) {
 addTime.addEventListener("click", function() {
     minutes.innerHTML = parseInt(minutes.innerHTML) + 1;
     minutes.innerHTML = leadingZeros(minutes.innerHTML);
+    if (minutes.innerHTML == 99) {
+        minutes.innerHTML = "01";
+    }
 });
 
 reduceTime.addEventListener("click", function() {
     minutes.innerHTML = parseInt(minutes.innerHTML) - 1;
     minutes.innerHTML = leadingZeros(minutes.innerHTML);
+    if (minutes.innerHTML == 00) {
+        minutes.innerHTML = "99";
+    }
 });
