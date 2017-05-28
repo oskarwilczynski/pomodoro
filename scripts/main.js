@@ -15,6 +15,9 @@ const
     resumePause = document.getElementById("resumePause"),
     reset = document.getElementById("reset");
 
+let
+    clock;
+
 work.addEventListener('click', workOn);
 function workOn() {
     mode.innerHTML = this.innerHTML;
@@ -40,6 +43,7 @@ reset.addEventListener('click', function() {
     work.addEventListener('click', workOn);
     longBreak.addEventListener('click', longBreakOn);
     shortBreak.addEventListener('click', shortBreakOn);
+    clearInterval(clock);
 
     mode.innerHTML = "Work";
     minutes.innerHTML = "25";
@@ -65,3 +69,23 @@ reduceTime.addEventListener("click", function() {
         minutes.innerHTML = "60";
     }
 });
+
+start.addEventListener("click", startTimer);
+function startTimer() {
+    clock = window.setInterval(function() {
+        if (seconds.innerHTML == 0 && minutes.innerHTML !== 0) {
+            minutes.innerHTML -= 1;
+            minutes.innerHTML = leadingZeros(minutes.innerHTML);
+            seconds.innerHTML = "59";
+        }
+
+        else if (seconds.innerHTML !== 0) {
+            seconds.innerHTML -= 1;
+            seconds.innerHTML = leadingZeros(seconds.innerHTML);
+        }
+
+        else {
+            clearInterval(clock);
+        }
+    }, 1000)
+}
