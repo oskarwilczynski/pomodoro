@@ -18,31 +18,33 @@ const
 let
     clock;
 
-work.addEventListener('click', workOn);
+work.addEventListener("click", workOn);
 function workOn() {
     mode.innerHTML = this.innerHTML;
     minutes.innerHTML = "25";
     seconds.innerHTML = "00";
 }
 
-longBreak.addEventListener('click', longBreakOn);
+longBreak.addEventListener("click", longBreakOn);
 function longBreakOn() {
     mode.innerHTML = this.innerHTML;   
     minutes.innerHTML = "15";
     seconds.innerHTML = "00";
 }
 
-shortBreak.addEventListener('click', shortBreakOn);
+shortBreak.addEventListener("click", shortBreakOn);
 function shortBreakOn() {
     mode.innerHTML = this.innerHTML;  
     minutes.innerHTML = "05";
     seconds.innerHTML = "00";
 }
 
-reset.addEventListener('click', function() {
-    work.addEventListener('click', workOn);
-    longBreak.addEventListener('click', longBreakOn);
-    shortBreak.addEventListener('click', shortBreakOn);
+reset.addEventListener("click", function() {
+    work.addEventListener("click", workOn);
+    longBreak.addEventListener("click", longBreakOn);
+    shortBreak.addEventListener("click", shortBreakOn);
+    addTime.addEventListener("click", addTimeButton);
+    reduceTime.addEventListener("click", reduceTimeButton);
     clearInterval(clock);
 
     mode.innerHTML = "Work";
@@ -54,38 +56,48 @@ function leadingZeros(i) {
     return ("00" + i).slice(-2);
 }
 
-addTime.addEventListener("click", function() {
+addTime.addEventListener("click", addTimeButton);
+function addTimeButton() {
     minutes.innerHTML = parseInt(minutes.innerHTML) + 1;
     minutes.innerHTML = leadingZeros(minutes.innerHTML);
     if (minutes.innerHTML == 61) {
         minutes.innerHTML = "01";
     }
-});
+}
 
-reduceTime.addEventListener("click", function() {
+reduceTime.addEventListener("click", reduceTimeButton);
+function reduceTimeButton() {
     minutes.innerHTML = parseInt(minutes.innerHTML) - 1;
     minutes.innerHTML = leadingZeros(minutes.innerHTML);
     if (minutes.innerHTML == 00) {
         minutes.innerHTML = "60";
     }
-});
+}
 
 start.addEventListener("click", startTimer);
 function startTimer() {
+    work.removeEventListener("click", workOn);
+    longBreak.removeEventListener("click", longBreakOn);
+    shortBreak.removeEventListener("click", shortBreakOn);
+    addTime.removeEventListener("click", addTimeButton);
+    reduceTime.removeEventListener("click", reduceTimeButton);
+
     clock = window.setInterval(function() {
-        if (seconds.innerHTML == 0 && minutes.innerHTML !== 0) {
-            minutes.innerHTML -= 1;
-            minutes.innerHTML = leadingZeros(minutes.innerHTML);
-            seconds.innerHTML = "59";
+        if (seconds.innerHTML == 0) {
+            if (minutes.innerHTML !== "00") {
+                minutes.innerHTML -= 1;
+                minutes.innerHTML = leadingZeros(minutes.innerHTML);
+                seconds.innerHTML = "59";
+            }
+
+            else if (minutes.innerHTML == "00") {
+                clearInterval(clock);
+            }
         }
 
         else if (seconds.innerHTML !== 0) {
             seconds.innerHTML -= 1;
             seconds.innerHTML = leadingZeros(seconds.innerHTML);
-        }
-
-        else {
-            clearInterval(clock);
         }
     }, 1000)
 }
