@@ -14,6 +14,7 @@ const
     start = document.getElementById("start"),
     resumePause = document.getElementById("resumePause"),
     reset = document.getElementById("reset");
+    alarm = document.getElementById("alarm");
 
 let
     clock;
