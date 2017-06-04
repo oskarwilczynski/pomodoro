@@ -102,3 +102,45 @@ function startTimer() {
         }
     }, 1000)
 }
+
+function intervalTimer(callback, interval) {
+    let
+        timerId, startTime;
+        remaining = 0;
+        state = 0;
+
+    this.pause = function() {
+        if (state != 1) {
+            return;
+        }
+
+        remaining = interval - (new Date() - startTime);
+        window.clearInterval(timerId);
+        state = 2;
+    };
+
+    this.resume = function() {
+        if (state != 2) {
+            return;
+        }
+
+        state = 3;
+        window.setTimout(this.timeoutCallback, remaining);
+    };
+
+    this.timeoutCallback = function() {
+        if (state != 3) {
+            return;
+        }
+
+        callback();
+
+        startTime = new Date();
+        timerId = window.setInterval(callback, interval);
+        state = 1;
+    };
+
+    startTime = new Date();
+    timerId = window.setInterval(callback, interval);
+    state = 1;
+}
