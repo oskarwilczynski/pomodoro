@@ -18,6 +18,68 @@ const
 
 let
     clock;
+    clockInterval;
+
+function intervalTimer(callback, interval) {
+    let
+        timerId, startTime;
+        remaining = 0;
+        state = 0; //  0 = idle, 1 = running, 2 = paused, 3= resumed
+
+    this.pause = function() {
+        if (state != 1) {
+            return;
+        }
+
+        remaining = interval - (new Date() - startTime);
+        window.clearInterval(timerId);
+        state = 2;
+    };
+
+    this.resume = function() {
+        if (state != 2) {
+            return;
+        }
+
+        state = 3;
+        window.setTimout(this.timeoutCallback, remaining);
+    };
+
+    this.timeoutCallback = function() {
+        if (state != 3) {
+            return;
+        }
+
+        callback();
+
+        startTime = new Date();
+        timerId = window.setInterval(callback, interval);
+        state = 1;
+    };
+
+    startTime = new Date();
+    timerId = window.setInterval(callback, interval);
+    state = 1;
+}
+
+clockInterval = new intervalTimer(function() {
+    if (seconds.innerHTML == 0) {
+        if (minutes.innerHTML !== "00") {
+            minutes.innerHTML -= 1;
+            minutes.innerHTML = leadingZeros(minutes.innerHTML);
+            seconds.innerHTML = "59";
+        }
+
+        else if (minutes.innerHTML == "00") {
+            clearInterval(clock);
+        }
+    }
+
+    else if (seconds.innerHTML !== 0) {
+        seconds.innerHTML -= 1;
+        seconds.innerHTML = leadingZeros(seconds.innerHTML);
+    }
+}, 1000);
 
 work.addEventListener("click", workOn);
 function workOn() {
@@ -101,46 +163,4 @@ function startTimer() {
             seconds.innerHTML = leadingZeros(seconds.innerHTML);
         }
     }, 1000)
-}
-
-function intervalTimer(callback, interval) {
-    let
-        timerId, startTime;
-        remaining = 0;
-        state = 0;
-
-    this.pause = function() {
-        if (state != 1) {
-            return;
-        }
-
-        remaining = interval - (new Date() - startTime);
-        window.clearInterval(timerId);
-        state = 2;
-    };
-
-    this.resume = function() {
-        if (state != 2) {
-            return;
-        }
-
-        state = 3;
-        window.setTimout(this.timeoutCallback, remaining);
-    };
-
-    this.timeoutCallback = function() {
-        if (state != 3) {
-            return;
-        }
-
-        callback();
-
-        startTime = new Date();
-        timerId = window.setInterval(callback, interval);
-        state = 1;
-    };
-
-    startTime = new Date();
-    timerId = window.setInterval(callback, interval);
-    state = 1;
 }
