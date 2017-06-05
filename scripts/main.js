@@ -13,17 +13,17 @@ const
     lowerButtons = document.getElementById("lowerButtons"),
     start = document.getElementById("start"),
     resumePause = document.getElementById("resumePause"),
-    reset = document.getElementById("reset");
+    reset = document.getElementById("reset"),
     alarm = document.getElementById("alarm");
 
 let
-    clock;
-    clockInterval;
+    clock,
+    timerId;
 
 function intervalTimer(callback, interval) {
     let
-        timerId, startTime;
-        remaining = 0;
+        startTime,
+        remaining = 0,
         state = 0; //  0 = idle, 1 = running, 2 = paused, 3= resumed
 
     this.pause = function() {
@@ -62,25 +62,6 @@ function intervalTimer(callback, interval) {
     state = 1;
 }
 
-clockInterval = new intervalTimer(function() {
-    if (seconds.innerHTML == 0) {
-        if (minutes.innerHTML !== "00") {
-            minutes.innerHTML -= 1;
-            minutes.innerHTML = leadingZeros(minutes.innerHTML);
-            seconds.innerHTML = "59";
-        }
-
-        else if (minutes.innerHTML == "00") {
-            clearInterval(clock);
-        }
-    }
-
-    else if (seconds.innerHTML !== 0) {
-        seconds.innerHTML -= 1;
-        seconds.innerHTML = leadingZeros(seconds.innerHTML);
-    }
-}, 1000);
-
 work.addEventListener("click", workOn);
 function workOn() {
     mode.innerHTML = this.innerHTML;
@@ -108,7 +89,8 @@ reset.addEventListener("click", function() {
     shortBreak.addEventListener("click", shortBreakOn);
     addTime.addEventListener("click", addTimeButton);
     reduceTime.addEventListener("click", reduceTimeButton);
-    clearInterval(clock);
+    start.addEventListener("click", startTimer);
+    clearInterval(timerId);
 
     mode.innerHTML = "Work";
     minutes.innerHTML = "25";
@@ -137,6 +119,8 @@ function reduceTimeButton() {
     }
 }
 
+resumePause.addEventListener("click", clockInterval.pause);
+
 start.addEventListener("click", startTimer);
 function startTimer() {
     work.removeEventListener("click", workOn);
@@ -144,8 +128,9 @@ function startTimer() {
     shortBreak.removeEventListener("click", shortBreakOn);
     addTime.removeEventListener("click", addTimeButton);
     reduceTime.removeEventListener("click", reduceTimeButton);
+    start.removeEventListener("click", startTimer);
 
-    clock = window.setInterval(function() {
+    let clockInterval = new intervalTimer(function() {
         if (seconds.innerHTML == 0) {
             if (minutes.innerHTML !== "00") {
                 minutes.innerHTML -= 1;
@@ -162,5 +147,5 @@ function startTimer() {
             seconds.innerHTML -= 1;
             seconds.innerHTML = leadingZeros(seconds.innerHTML);
         }
-    }, 1000)
+    }, 1000);
 }
