@@ -153,13 +153,13 @@ function startTimer() {
 
     pause.addEventListener("click", function() {
     	clockInterval.pause();
-    	pause.innerHTML = "Resume";
-    	pause.id = "resume";
+    	pause.setAttribute('style', 'display: none !important;');
+    	resume.setAttribute('style', 'display: inline-block !important;');
     })
 
     resume.addEventListener("click", function() {
     	clockInterval.resume();
-    	resume.innerHTML = "Pause";
-    	resume.id = "pause";
+    	resume.setAttribute('style', 'display: none !important;');
+    	pause.setAttribute('style', 'display: inline-block !important;');
     })
 }
