@@ -1,3 +1,4 @@
+"use strict";
 const
     upperButtons = document.getElementById("upperButtons"),
     work = document.getElementById("work"),
@@ -18,7 +19,8 @@ const
 
 let
     clock,
-    timerId;
+    timerId,
+    count;
 
 function intervalTimer(callback, interval) {
     let
@@ -37,12 +39,13 @@ function intervalTimer(callback, interval) {
     };
 
     this.resume = function() {
+    	clearTimeout(timerId);
         if (state != 2) {
             return;
         }
 
         state = 3;
-        window.setTimout(this.timeoutCallback, remaining);
+        window.setTimeout(this.timeoutCallback, remaining);
     };
 
     this.timeoutCallback = function() {
@@ -114,12 +117,10 @@ reduceTime.addEventListener("click", reduceTimeButton);
 function reduceTimeButton() {
     minutes.innerHTML = parseInt(minutes.innerHTML) - 1;
     minutes.innerHTML = leadingZeros(minutes.innerHTML);
-    if (minutes.innerHTML == 00) {
+    if (minutes.innerHTML == 0) {
         minutes.innerHTML = "60";
     }
 }
-
-resumePause.addEventListener("click", clockInterval.pause);
 
 start.addEventListener("click", startTimer);
 function startTimer() {
@@ -148,4 +149,20 @@ function startTimer() {
             seconds.innerHTML = leadingZeros(seconds.innerHTML);
         }
     }, 1000);
+
+    resumePause.addEventListener("click", function() {
+    	count = 0;
+
+    	if (count = 0) {
+	    	clockInterval.pause();
+	    	resumePause.innerHTML = "Resume";
+	    	count = 1;
+	    }
+
+    	else if (count = 1) {
+    		clockInterval.resume();
+    		resumePause.innerHTML = "Pause";
+    		count = 0;
+    	}
+    })
 }
