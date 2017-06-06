@@ -13,7 +13,8 @@ const
     reduceTime = document.getElementById("reduceTime"),
     lowerButtons = document.getElementById("lowerButtons"),
     start = document.getElementById("start"),
-    resumePause = document.getElementById("resumePause"),
+    pause = document.getElementById("pause"),
+    resume = document.getElementById("resume"),
     reset = document.getElementById("reset"),
     alarm = document.getElementById("alarm");
 
@@ -150,19 +151,15 @@ function startTimer() {
         }
     }, 1000);
 
-    resumePause.addEventListener("click", function() {
-    	count = 0;
+    pause.addEventListener("click", function() {
+    	clockInterval.pause();
+    	pause.innerHTML = "Resume";
+    	pause.id = "resume";
+    })
 
-    	if (count = 0) {
-	    	clockInterval.pause();
-	    	resumePause.innerHTML = "Resume";
-	    	count = 1;
-	    }
-
-    	else if (count = 1) {
-    		clockInterval.resume();
-    		resumePause.innerHTML = "Pause";
-    		count = 0;
-    	}
+    resume.addEventListener("click", function() {
+    	clockInterval.resume();
+    	resume.innerHTML = "Pause";
+    	resume.id = "pause";
     })
 }
