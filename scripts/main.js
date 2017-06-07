@@ -140,6 +140,7 @@ function resumeOn() {
 
 start.addEventListener("click", startTimer);
 function startTimer() {
+	alarm.play();
     work.removeEventListener("click", workOn);
     longBreak.removeEventListener("click", longBreakOn);
     shortBreak.removeEventListener("click", shortBreakOn);
