@@ -21,6 +21,7 @@ const
 let
     clock,
     timerId,
+    clockInterval,
     count;
 
 function intervalTimer(callback, interval) {
@@ -94,6 +95,8 @@ reset.addEventListener("click", function() {
     addTime.addEventListener("click", addTimeButton);
     reduceTime.addEventListener("click", reduceTimeButton);
     start.addEventListener("click", startTimer);
+    pause.removeEventListener("click", pauseOn);
+    resume.removeEventListener("click", resumeOn);
     clearInterval(timerId);
 
     mode.innerHTML = "Work";
@@ -123,6 +126,18 @@ function reduceTimeButton() {
     }
 }
 
+function pauseOn() {
+	clockInterval.pause();
+	pause.setAttribute('style', 'display: none !important;');
+	resume.setAttribute('style', 'display: inline-block !important;');
+}
+
+function resumeOn() {
+	clockInterval.resume();
+	resume.setAttribute('style', 'display: none !important;');
+	pause.setAttribute('style', 'display: inline-block !important;');
+}
+
 start.addEventListener("click", startTimer);
 function startTimer() {
     work.removeEventListener("click", workOn);
@@ -131,8 +146,10 @@ function startTimer() {
     addTime.removeEventListener("click", addTimeButton);
     reduceTime.removeEventListener("click", reduceTimeButton);
     start.removeEventListener("click", startTimer);
+    resume.addEventListener("click", resumeOn);
+    pause.addEventListener("click", window.pauseOn);
 
-    let clockInterval = new intervalTimer(function() {
+    clockInterval = new intervalTimer(function() {
         if (seconds.innerHTML == 0) {
             if (minutes.innerHTML !== "00") {
                 minutes.innerHTML -= 1;
@@ -150,16 +167,4 @@ function startTimer() {
             seconds.innerHTML = leadingZeros(seconds.innerHTML);
         }
     }, 1000);
-
-    pause.addEventListener("click", function() {
-    	clockInterval.pause();
-    	pause.setAttribute('style', 'display: none !important;');
-    	resume.setAttribute('style', 'display: inline-block !important;');
-    })
-
-    resume.addEventListener("click", function() {
-    	clockInterval.resume();
-    	resume.setAttribute('style', 'display: none !important;');
-    	pause.setAttribute('style', 'display: inline-block !important;');
-    })
 }
