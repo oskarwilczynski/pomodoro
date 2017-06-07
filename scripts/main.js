@@ -41,7 +41,7 @@ function intervalTimer(callback, interval) {
     };
 
     this.resume = function() {
-    	clearTimeout(timerId);
+        clearTimeout(timerId);
         if (state != 2) {
             return;
         }
@@ -127,20 +127,19 @@ function reduceTimeButton() {
 }
 
 function pauseOn() {
-	clockInterval.pause();
-	pause.setAttribute('style', 'display: none !important;');
-	resume.setAttribute('style', 'display: inline-block !important;');
+    clockInterval.pause();
+    pause.setAttribute('style', 'display: none !important;');
+    resume.setAttribute('style', 'display: inline-block !important;');
 }
 
 function resumeOn() {
-	clockInterval.resume();
-	resume.setAttribute('style', 'display: none !important;');
-	pause.setAttribute('style', 'display: inline-block !important;');
+    clockInterval.resume();
+    resume.setAttribute('style', 'display: none !important;');
+    pause.setAttribute('style', 'display: inline-block !important;');
 }
 
 start.addEventListener("click", startTimer);
 function startTimer() {
-	alarm.play();
     work.removeEventListener("click", workOn);
     longBreak.removeEventListener("click", longBreakOn);
     shortBreak.removeEventListener("click", shortBreakOn);
@@ -160,6 +159,7 @@ function startTimer() {
 
             else if (minutes.innerHTML == "00") {
                 clearInterval(clock);
+                alarm.play();
             }
         }
 
