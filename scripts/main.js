@@ -22,7 +22,10 @@ let
     clock,
     timerId,
     clockInterval,
-    count;
+    count,
+    workTime = "25",
+    longBreakTime = "15",
+    shortBreakTime = "05";
 
 function intervalTimer(callback, interval) {
     let
@@ -70,7 +73,7 @@ function intervalTimer(callback, interval) {
 work.addEventListener("click", workOn);
 function workOn() {
     mode.innerHTML = this.innerHTML;
-    minutes.innerHTML = "25";
+    minutes.innerHTML = workTime;
     seconds.innerHTML = "00";
     alarm.pause();
 }
@@ -78,7 +81,7 @@ function workOn() {
 longBreak.addEventListener("click", longBreakOn);
 function longBreakOn() {
     mode.innerHTML = this.innerHTML;   
-    minutes.innerHTML = "15";
+    minutes.innerHTML = longBreakTime;
     seconds.innerHTML = "00";
     alarm.pause();
 
@@ -87,7 +90,7 @@ function longBreakOn() {
 shortBreak.addEventListener("click", shortBreakOn);
 function shortBreakOn() {
     mode.innerHTML = this.innerHTML;  
-    minutes.innerHTML = "05";
+    minutes.innerHTML = shortBreakTime;
     seconds.innerHTML = "00";
     alarm.pause();
 
@@ -108,6 +111,10 @@ reset.addEventListener("click", function() {
     mode.innerHTML = "Work";
     minutes.innerHTML = "25";
     seconds.innerHTML = "00";
+
+    workTime = "25";
+    longBreakTime = "15";
+    shortBreakTime = "05";
 });
 
 function leadingZeros(i) {
@@ -121,6 +128,18 @@ function addTimeButton() {
     if (minutes.innerHTML == 61) {
         minutes.innerHTML = "01";
     }
+
+    if (mode.innerHTML == "Work") {
+        workTime = minutes.innerHTML;
+    }
+
+    else if (mode.innerHTML == "Long Break") {
+        longBreakTime = minutes.innerHTML;
+    }
+
+    else {
+        shortBreakTime = minutes.innerHTML;
+    }
 }
 
 reduceTime.addEventListener("click", reduceTimeButton);
@@ -129,6 +148,18 @@ function reduceTimeButton() {
     minutes.innerHTML = leadingZeros(minutes.innerHTML);
     if (minutes.innerHTML == 0) {
         minutes.innerHTML = "60";
+    }
+
+    if (mode.innerHTML == "Work") {
+        workTime = minutes.innerHTML;
+    }
+
+    else if (mode.innerHTML == "Long Break") {
+        longBreakTime = minutes.innerHTML;
+    }
+
+    else {
+        shortBreakTime = minutes.innerHTML;
     }
 }
 
