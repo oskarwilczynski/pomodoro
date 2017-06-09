@@ -72,6 +72,7 @@ function workOn() {
     mode.innerHTML = this.innerHTML;
     minutes.innerHTML = "25";
     seconds.innerHTML = "00";
+    alarm.pause();
 }
 
 longBreak.addEventListener("click", longBreakOn);
@@ -79,6 +80,8 @@ function longBreakOn() {
     mode.innerHTML = this.innerHTML;   
     minutes.innerHTML = "15";
     seconds.innerHTML = "00";
+    alarm.pause();
+
 }
 
 shortBreak.addEventListener("click", shortBreakOn);
@@ -86,6 +89,8 @@ function shortBreakOn() {
     mode.innerHTML = this.innerHTML;  
     minutes.innerHTML = "05";
     seconds.innerHTML = "00";
+    alarm.pause();
+
 }
 
 reset.addEventListener("click", function() {
@@ -98,6 +103,7 @@ reset.addEventListener("click", function() {
     pause.removeEventListener("click", pauseOn);
     resume.removeEventListener("click", resumeOn);
     clearInterval(timerId);
+    alarm.pause();
 
     mode.innerHTML = "Work";
     minutes.innerHTML = "25";
@@ -147,7 +153,7 @@ function startTimer() {
     reduceTime.removeEventListener("click", reduceTimeButton);
     start.removeEventListener("click", startTimer);
     resume.addEventListener("click", resumeOn);
-    pause.addEventListener("click", window.pauseOn);
+    pause.addEventListener("click", pauseOn);
 
     clockInterval = new intervalTimer(function() {
         if (seconds.innerHTML == 0) {
@@ -160,6 +166,9 @@ function startTimer() {
             else if (minutes.innerHTML == "00") {
                 clearInterval(clock);
                 alarm.play();
+                work.addEventListener("click", workOn);
+                longBreak.addEventListener("click", longBreakOn);
+                shortBreak.addEventListener("click", shortBreakOn);
             }
         }
 
