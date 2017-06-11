@@ -8,3 +8,9 @@ after the tomato-shaped kitchen timer that Cirillo used as a university student.
 Closely related to concepts such as timeboxing and iterative and incremental development used in software design, 
 the method has been adopted in pair programming contexts._"  
 [Source](https://en.wikipedia.org/wiki/Pomodoro_Technique)
+
+### Features:
+* Fully Responsive Design allows to use the timer on nearly all of devices.
+* Alarm sound lets to be focused on other activities and forget about looking on timer.
+
+TBC
