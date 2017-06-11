@@ -121,14 +121,7 @@ function leadingZeros(i) {
     return ("00" + i).slice(-2);
 }
 
-addTime.addEventListener("click", addTimeButton);
-function addTimeButton() {
-    minutes.innerHTML = parseInt(minutes.innerHTML) + 1;
-    minutes.innerHTML = leadingZeros(minutes.innerHTML);
-    if (minutes.innerHTML == 61) {
-        minutes.innerHTML = "01";
-    }
-
+function timeSaver() {
     if (mode.innerHTML == "Work") {
         workTime = minutes.innerHTML;
     }
@@ -142,6 +135,17 @@ function addTimeButton() {
     }
 }
 
+addTime.addEventListener("click", addTimeButton);
+function addTimeButton() {
+    minutes.innerHTML = parseInt(minutes.innerHTML) + 1;
+    minutes.innerHTML = leadingZeros(minutes.innerHTML);
+    if (minutes.innerHTML == 61) {
+        minutes.innerHTML = "01";
+    }
+
+    timeSaver();
+}
+
 reduceTime.addEventListener("click", reduceTimeButton);
 function reduceTimeButton() {
     minutes.innerHTML = parseInt(minutes.innerHTML) - 1;
@@ -150,17 +154,7 @@ function reduceTimeButton() {
         minutes.innerHTML = "60";
     }
 
-    if (mode.innerHTML == "Work") {
-        workTime = minutes.innerHTML;
-    }
-
-    else if (mode.innerHTML == "Long Break") {
-        longBreakTime = minutes.innerHTML;
-    }
-
-    else {
-        shortBreakTime = minutes.innerHTML;
-    }
+    timeSaver();
 }
 
 function pauseOn() {

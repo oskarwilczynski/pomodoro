@@ -22,6 +22,7 @@ body {
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    overflow: hidden;
 }
 
 #upperButtons,
@@ -84,4 +85,40 @@ body {
 
 #resume {
     display: none !important;
+}
+
+@media only screen and (max-width: 360px) {
+    #upperButtons div,
+    #lowerButtons div {
+        width: 80px;
+        line-height: 50px;
+        height: 50px;
+        padding: 3px 5px;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 1rem;
+        margin: 0px;
+        letter-spacing: 0.1rem;
+        transition: all 0.35s linear;
+        margin-top: 25px;
+    }
+
+    #timer {
+        margin-bottom: 0px;
+        margin-top: 0px !important;
+    }
+
+    #longBreak {
+        line-height: 25px !important;
+    }
+
+    #upperButtons {
+        margin-bottom: 40px !important;
+    }
+
+    #lowerButtons {
+        margin-top: 8px;
+    }
 }
