@@ -159,14 +159,14 @@ function reduceTimeButton() {
 
 function pauseOn() {
     clockInterval.pause();
-    pause.setAttribute('style', 'display: none !important;');
-    resume.setAttribute('style', 'display: inline-block !important;');
+    pause.setAttribute("style", "display: none !important;");
+    resume.setAttribute("style", "display: inline-block !important;");
 }
 
 function resumeOn() {
     clockInterval.resume();
-    resume.setAttribute('style', 'display: none !important;');
-    pause.setAttribute('style', 'display: inline-block !important;');
+    resume.setAttribute("style", "display: none !important;");
+    pause.setAttribute("style", "display: inline-block !important;");
 }
 
 start.addEventListener("click", startTimer);
