@@ -16,7 +16,11 @@ the method has been adopted in pair programming contexts._"
 
 ## Installation
 
+<<<<<<< HEAD
 Just download whole directory, run index.html in your browser and enjoy!
+=======
+Just download whole directory, run index.html and enjoy!
+>>>>>>> 38437526171cdba29f248ec6e5854229401b12db
 
 ## Release History
 
