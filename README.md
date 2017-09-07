@@ -15,8 +15,7 @@ the method has been adopted in pair programming contexts._"
 * All modes (Work, Long Break, Break) are capable of saving the time you set before starting the timer.
 
 ## Installation
-Just download whole directory, run index.html in your browser and enjoy!
-
+Live at http://oskarwilczynski.com/projects/pomodoro/index.html
 ## Release History
 
 * 1.0
