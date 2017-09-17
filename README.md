@@ -13,6 +13,7 @@ the method has been adopted in pair programming contexts._"
 * Fully Responsive Design allows to use the timer on nearly all of devices.
 * Alarm sound lets to be focused on other activities and forget about looking on timer.
 * All modes (Work, Long Break, Break) are capable of saving the time you set before starting the timer.
+* Minified with Gulp (for distribution-ready directory click [here](https://github.com/oskarwilczynski/portfolio-site/tree/master/dist/projects/pomodoro))
 
 ## Installation
 Live at http://oskarwilczynski.com/projects/pomodoro/index.html
