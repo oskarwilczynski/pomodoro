@@ -4,3 +4,42 @@ $red: #ff6347;
 
 //fonts
 $font-stack: ‘Times New Roman’, Times, serif;
+
+//resets
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none; /* Standard syntax */
+}
+
+//placeholders
+%lowerAndUpperButtons {
+	width: 150px;
+	padding: 6px 10px;
+	border: 2px solid $white;
+	border-radius: 3px;
+	text-align: center;
+	font-size: 1.5rem;
+	margin: 10px;
+	letter-spacing: 0.1rem;
+	transition: all 0.35s linear;
+}
+
+html, body {
+    background-color: #ff6347; /* Tomato color */
+    max-height: 100%;
+    max-width: 100%;
+}
+
+body {
+	position: absolute;
+	font-family: $font-stack;
+	font-size: 3em;
+	color: $white;
+	width: 1000px;
+	height: 525px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	overflow-x: hidden;
+}
