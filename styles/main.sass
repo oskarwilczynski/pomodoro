@@ -13,7 +13,9 @@ $font-stack: ‘Times New Roman’, Times, serif;
 }
 
 //placeholders
-%lowerAndUpperButtons {
+%upperAndLowerButtonsDivs {
+	display: inline-block;
+	cursor: pointer;
 	width: 150px;
 	padding: 6px 10px;
 	border: 2px solid $white;
@@ -42,4 +44,40 @@ body {
 	top: 50%;
 	transform: translate(-50%, -50%);
 	overflow-x: hidden;
+}
+
+#upperButtons {
+	text-align: center;
+	div {
+		@extend %upperAndLowerButtonsDivs;
+		&:hover {
+			color: $red;
+			background-color: $white;
+		}
+	}
+}
+
+#timer {
+	text-align: center;
+	border: 2px solid $white;
+	border-radius: 50%;
+	width: 276px;
+	height: 226px;
+	margin: 5% auto;
+	padding-top: 50px;
+	div {
+		display: inline-block;
+		cursor: pointer;
+	}
+}
+
+#lowerButtons {
+	text-align: center;
+	div {
+		@extend %upperAndLowerButtonsDivs;
+		&:hover {
+			color: $red;
+			background-color: $white;
+		}
+	}
 }
