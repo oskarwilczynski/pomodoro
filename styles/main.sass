@@ -1,6 +1,6 @@
 //colors
 $white: #fff;
-$red: #ff6347;
+$red: #ff6347; /* Tomato color */
 
 //fonts
 $font-stack: ‘Times New Roman’, Times, serif;
@@ -28,7 +28,7 @@ $font-stack: ‘Times New Roman’, Times, serif;
 }
 
 html, body {
-    background-color: #ff6347; /* Tomato color */
+    background-color: $red;
     max-height: 100%;
     max-width: 100%;
 }
@@ -79,5 +79,67 @@ body {
 			color: $red;
 			background-color: $white;
 		}
+	}
+}
+
+#mode {
+	display: block !important;
+	cursor: auto !important;
+}
+
+#time {
+	cursor: auto !important;
+	vertical-align: middle;
+	font-size: 1.5em;
+}
+
+#addTime, #reduceTime {
+	vertical-align: middle;
+	font-size: 0.6em;
+}
+
+#resume {
+	display: none !important;
+}
+
+@media only screen and(max-width: 590px) {
+	//placeholders
+	%upperAndLowerButtonsDivsMobile {
+		width: 80px;
+	    line-height: 50px;
+	    height: 50px;
+	    padding: 3px 5px;
+	    border: 2px solid #fff;
+	    border-radius: 3px;
+	    text-align: center;
+	    vertical-align: middle;
+	    font-size: 1.25rem;
+	    margin: 0px;
+	    letter-spacing: 0.1rem;
+	    transition: all 0.35s linear;
+	    margin-top: 25px;	
+	}
+
+	#upperButtons {
+		margin-bottom: 40px !important;
+		div {
+			@extend %upperAndLowerButtonsDivsMobile;
+		}
+	}
+
+	#lowerButtons {
+		margin-top: 8px;
+		div {
+			@extend %upperAndLowerButtonsDivsMobile;
+		}
+	}
+
+	#timer {
+		margin-bottom: 0;
+		margin-top: 0 !important;
+	}
+
+	#longBreak {
+		line-height: 25px !important;
 	}
 }
