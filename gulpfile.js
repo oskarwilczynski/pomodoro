@@ -5,6 +5,8 @@ const
     header = require("gulp-header"),
     htmlmin = require("gulp-htmlmin"),
     cssnano = require("gulp-cssnano"),
+    sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
     babel = require("gulp-babel"),
     uglify = require("gulp-uglify"),
     pump = require("pump");
@@ -25,7 +27,9 @@ const
     // CSS processing
     gulp.task("css-min", function(cb) {
         pump([
-            gulp.src("styles/main.css"),
+            gulp.src("styles/main.scss"),
+            sass(),
+            autoprefixer(),
             cssnano(),
             header("/* To see the unminified version visit https://github.com/oskarwilczynski/pomodoro/blob/master/styles/main.css */\n\n"),
             gulp.dest("../portfolio-site/dist/projects/pomodoro/styles/")

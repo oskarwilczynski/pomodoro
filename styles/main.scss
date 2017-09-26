@@ -1,0 +1,144 @@
+//colors
+$red: #ff6347;
+
+//fonts
+$font-stack: ‘Times New Roman’, Times, serif;
+
+//resets
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+//placeholders
+%upperAndLowerButtonsDivs {
+    display: inline-block;
+    cursor: pointer;
+    width: 150px;
+    padding: 6px 10px;
+    border: 2px solid white;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 10px;
+    letter-spacing: 0.1rem;
+    transition: all 0.35s linear;
+}
+
+html, body {
+    background-color: $red;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+body {
+    position: absolute;
+    font-family: $font-stack;
+    font-size: 3em;
+    color: white;
+    width: 1000px;
+    height: 525px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow-x: hidden;
+}
+
+#upperButtons {
+    text-align: center;
+    div {
+        @extend %upperAndLowerButtonsDivs;
+        &:hover {
+            color: $red;
+            background-color: white;
+        }
+    }
+}
+
+#timer {
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 276px;
+    height: 226px;
+    margin: 5% auto;
+    padding-top: 50px;
+    div {
+        display: inline-block;
+        cursor: pointer;
+    }
+}
+
+#lowerButtons {
+    text-align: center;
+    div {
+        @extend %upperAndLowerButtonsDivs;
+        &:hover {
+            color: $red;
+            background-color: white;
+        }
+    }
+}
+
+#mode {
+    display: block !important;
+    cursor: auto !important;
+}
+
+#time {
+    cursor: auto !important;
+    vertical-align: middle;
+    font-size: 1.5em;
+}
+
+#addTime, #reduceTime {
+    vertical-align: middle;
+    font-size: 0.6em;
+}
+
+#resume {
+    display: none !important;
+}
+
+@media only screen and(max-width: 590px) {
+    //placeholders
+    %upperAndLowerButtonsDivsMobile {
+        width: 80px;
+        line-height: 50px;
+        height: 50px;
+        padding: 3px 5px;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 1.25rem;
+        margin: 0px;
+        letter-spacing: 0.1rem;
+        transition: all 0.35s linear;
+        margin-top: 25px;   
+    }
+
+    #upperButtons {
+        margin-bottom: 40px !important;
+        div {
+            @extend %upperAndLowerButtonsDivsMobile;
+        }
+    }
+
+    #lowerButtons {
+        margin-top: 8px;
+        div {
+            @extend %upperAndLowerButtonsDivsMobile;
+        }
+    }
+
+    #timer {
+        margin-bottom: 0;
+        margin-top: 0 !important;
+    }
+
+    #longBreak {
+        line-height: 25px !important;
+    }
+}
